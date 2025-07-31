@@ -87,21 +87,21 @@ export default function UploadPage() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Header />
       
-      <main className="max-w-6xl mx-auto px-6 py-8">
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">
             Data Upload
           </h1>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
             Upload your mudlogging data files for processing and drift correction
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {/* Upload Zone */}
-          <div className="space-y-6">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+          <div className="space-y-4 sm:space-y-6">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6">
+              <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">
                 Upload Data File
               </h2>
               <FileUploadZone 
@@ -111,31 +111,31 @@ export default function UploadPage() {
             </div>
 
             {/* Upload Instructions */}
-            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-200 mb-4">
+            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 sm:p-6">
+              <h3 className="text-base sm:text-lg font-semibold text-blue-900 dark:text-blue-200 mb-3 sm:mb-4">
                 Upload Guidelines
               </h3>
-              <ul className="space-y-2 text-blue-800 dark:text-blue-300">
+              <ul className="space-y-2 text-blue-800 dark:text-blue-300 text-sm sm:text-base">
                 <li className="flex items-start space-x-2">
-                  <div className="w-4 h-4 flex items-center justify-center mt-0.5">
+                  <div className="w-4 h-4 flex items-center justify-center mt-0.5 flex-shrink-0">
                     <i className="ri-check-line text-sm"></i>
                   </div>
                   <span>Ensure your file contains depth, time, and gas measurement columns</span>
                 </li>
                 <li className="flex items-start space-x-2">
-                  <div className="w-4 h-4 flex items-center justify-center mt-0.5">
+                  <div className="w-4 h-4 flex items-center justify-center mt-0.5 flex-shrink-0">
                     <i className="ri-check-line text-sm"></i>
                   </div>
                   <span>CSV files should use comma separation with headers in the first row</span>
                 </li>
                 <li className="flex items-start space-x-2">
-                  <div className="w-4 h-4 flex items-center justify-center mt-0.5">
+                  <div className="w-4 h-4 flex items-center justify-center mt-0.5 flex-shrink-0">
                     <i className="ri-check-line text-sm"></i>
                   </div>
                   <span>Excel files (.xlsx/.xls) are supported with data in the first sheet</span>
                 </li>
                 <li className="flex items-start space-x-2">
-                  <div className="w-4 h-4 flex items-center justify-center mt-0.5">
+                  <div className="w-4 h-4 flex items-center justify-center mt-0.5 flex-shrink-0">
                     <i className="ri-check-line text-sm"></i>
                   </div>
                   <span>Maximum file size is 10MB for optimal performance</span>
@@ -144,19 +144,19 @@ export default function UploadPage() {
             </div>
 
             {/* Voice Instructions */}
-            <div className="bg-gray-100 dark:bg-gray-700 rounded-xl p-6">
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-8 h-8 flex items-center justify-center">
-                  <i className="ri-mic-line text-gray-600 dark:text-gray-400 text-lg"></i>
+            <div className="bg-gray-100 dark:bg-gray-700 rounded-xl p-4 sm:p-6">
+              <div className="flex items-center space-x-3 mb-3 sm:mb-4">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center">
+                  <i className="ri-mic-line text-gray-600 dark:text-gray-400 text-base sm:text-lg"></i>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
                   Voice Assistant
                 </h3>
               </div>
-              <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
+              <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4">
                 Use voice commands to help with file operations
               </p>
-              <button className="flex items-center space-x-2 px-4 py-2 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors whitespace-nowrap cursor-pointer">
+              <button className="flex items-center space-x-2 px-3 sm:px-4 py-2 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors whitespace-nowrap cursor-pointer text-sm sm:text-base">
                 <div className="w-4 h-4 flex items-center justify-center">
                   <i className="ri-mic-line"></i>
                 </div>
@@ -166,28 +166,28 @@ export default function UploadPage() {
           </div>
 
           {/* File Preview and Validation */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {uploadedFile && (
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6">
+                <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">
                   File Information
                 </h2>
                 
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
-                      <i className="ri-file-excel-line text-blue-600 text-xl"></i>
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i className="ri-file-excel-line text-blue-600 text-lg sm:text-xl"></i>
                     </div>
-                    <div className="flex-1">
-                      <p className="font-semibold text-gray-900 dark:text-white">{uploadedFile.name}</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <div className="flex-1 min-w-0">
+                      <p className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base truncate">{uploadedFile.name}</p>
+                      <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                         {formatFileSize(uploadedFile.size)} • {uploadedFile.type}
                       </p>
                     </div>
                   </div>
 
                   {/* Validation Status */}
-                  <div className={`p-4 rounded-lg flex items-center space-x-3 ${
+                  <div className={`p-3 sm:p-4 rounded-lg flex items-center space-x-3 ${
                     validationStatus === 'validating' 
                       ? 'bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800'
                       : validationStatus === 'valid'
@@ -196,19 +196,19 @@ export default function UploadPage() {
                       ? 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800'
                       : 'bg-gray-50 dark:bg-gray-700'
                   }`}>
-                    <div className="w-6 h-6 flex items-center justify-center">
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center flex-shrink-0">
                       {validationStatus === 'validating' && (
-                        <i className="ri-loader-4-line text-yellow-600 animate-spin"></i>
+                        <i className="ri-loader-4-line text-yellow-600 animate-spin text-sm sm:text-base"></i>
                       )}
                       {validationStatus === 'valid' && (
-                        <i className="ri-check-line text-green-600"></i>
+                        <i className="ri-check-line text-green-600 text-sm sm:text-base"></i>
                       )}
                       {validationStatus === 'invalid' && (
-                        <i className="ri-close-line text-red-600"></i>
+                        <i className="ri-close-line text-red-600 text-sm sm:text-base"></i>
                       )}
                     </div>
-                    <div>
-                      <p className={`font-semibold ${
+                    <div className="flex-1 min-w-0">
+                      <p className={`font-semibold text-sm sm:text-base ${
                         validationStatus === 'validating' ? 'text-yellow-800 dark:text-yellow-200'
                         : validationStatus === 'valid' ? 'text-green-800 dark:text-green-200'
                         : validationStatus === 'invalid' ? 'text-red-800 dark:text-red-200'
@@ -219,7 +219,7 @@ export default function UploadPage() {
                         {validationStatus === 'invalid' && 'File validation failed'}
                       </p>
                       {validationStatus !== 'validating' && (
-                        <p className={`text-sm ${
+                        <p className={`text-xs sm:text-sm ${
                           validationStatus === 'valid' ? 'text-green-700 dark:text-green-300'
                           : 'text-red-700 dark:text-red-300'
                         }`}>
@@ -236,30 +236,30 @@ export default function UploadPage() {
             )}
 
             {schemaPreview && (
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6">
+                <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">
                   Data Schema Preview
                 </h2>
                 
-                <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg">
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
+                    <div className="bg-gray-50 dark:bg-gray-700 p-2 sm:p-3 rounded-lg">
                       <p className="font-semibold text-gray-700 dark:text-gray-300">Total Rows</p>
-                      <p className="text-gray-900 dark:text-white text-lg">{schemaPreview.totalRows}</p>
+                      <p className="text-gray-900 dark:text-white text-base sm:text-lg">{schemaPreview.totalRows}</p>
                     </div>
-                    <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg">
+                    <div className="bg-gray-50 dark:bg-gray-700 p-2 sm:p-3 rounded-lg">
                       <p className="font-semibold text-gray-700 dark:text-gray-300">Columns</p>
-                      <p className="text-gray-900 dark:text-white text-lg">{schemaPreview.columns}</p>
+                      <p className="text-gray-900 dark:text-white text-base sm:text-lg">{schemaPreview.columns}</p>
                     </div>
                   </div>
 
                   <div>
-                    <p className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Column Headers</p>
-                    <div className="flex flex-wrap gap-2">
+                    <p className="font-semibold text-gray-700 dark:text-gray-300 mb-2 text-sm sm:text-base">Column Headers</p>
+                    <div className="flex flex-wrap gap-1 sm:gap-2">
                       {schemaPreview.headers?.map((header: string, index: number) => (
                         <span 
                           key={index} 
-                          className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full"
+                          className="px-2 sm:px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs sm:text-sm rounded-full"
                         >
                           {header}
                         </span>
@@ -269,13 +269,13 @@ export default function UploadPage() {
 
                   {schemaPreview.sampleRows && schemaPreview.sampleRows.length > 0 && (
                     <div>
-                      <p className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Sample Data</p>
+                      <p className="font-semibold text-gray-700 dark:text-gray-300 mb-2 text-sm sm:text-base">Sample Data</p>
                       <div className="overflow-x-auto">
-                        <table className="min-w-full text-sm">
+                        <table className="min-w-full text-xs sm:text-sm">
                           <thead>
                             <tr className="bg-gray-50 dark:bg-gray-700">
                               {schemaPreview.headers?.slice(0, 4).map((header: string, index: number) => (
-                                <th key={index} className="px-3 py-2 text-left font-medium text-gray-700 dark:text-gray-300">
+                                <th key={index} className="px-2 sm:px-3 py-2 text-left font-medium text-gray-700 dark:text-gray-300">
                                   {header}
                                 </th>
                               ))}
@@ -285,7 +285,7 @@ export default function UploadPage() {
                             {schemaPreview.sampleRows.slice(0, 3).map((row: any, rowIndex: number) => (
                               <tr key={rowIndex} className="border-t border-gray-200 dark:border-gray-600">
                                 {schemaPreview.headers?.slice(0, 4).map((header: string, colIndex: number) => (
-                                  <td key={colIndex} className="px-3 py-2 text-gray-900 dark:text-white">
+                                  <td key={colIndex} className="px-2 sm:px-3 py-2 text-gray-900 dark:text-white">
                                     {row[header] || '-'}
                                   </td>
                                 ))}
@@ -301,34 +301,34 @@ export default function UploadPage() {
             )}
 
             {validationStatus === 'valid' && (
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6">
+                <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">
                   Next Steps
                 </h2>
                 <div className="space-y-3">
                   <Link 
                     href="/correction" 
-                    className="w-full flex items-center justify-between p-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors cursor-pointer"
+                    className="w-full flex items-center justify-between p-3 sm:p-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors cursor-pointer"
                   >
-                    <div className="flex items-center space-x-3">
-                      <div className="w-6 h-6 flex items-center justify-center">
+                    <div className="flex items-center space-x-2 sm:space-x-3">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center">
                         <i className="ri-line-chart-line"></i>
                       </div>
-                      <span className="font-semibold">Proceed to Drift Correction</span>
+                      <span className="font-semibold text-sm sm:text-base">Proceed to Drift Correction</span>
                     </div>
-                    <div className="w-6 h-6 flex items-center justify-center">
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center">
                       <i className="ri-arrow-right-line"></i>
                     </div>
                   </Link>
                   
-                  <button className="w-full flex items-center justify-between p-4 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors cursor-pointer">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-6 h-6 flex items-center justify-center">
+                  <button className="w-full flex items-center justify-between p-3 sm:p-4 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors cursor-pointer">
+                    <div className="flex items-center space-x-2 sm:space-x-3">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center">
                         <i className="ri-save-line"></i>
                       </div>
-                      <span className="font-semibold">Save for Later Processing</span>
+                      <span className="font-semibold text-sm sm:text-base">Save for Later Processing</span>
                     </div>
-                    <div className="w-6 h-6 flex items-center justify-center">
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center">
                       <i className="ri-arrow-right-line"></i>
                     </div>
                   </button>

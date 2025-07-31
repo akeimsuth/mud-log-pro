@@ -2,3 +2,283 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Mobile-specific improvements */
+@layer base {
+  /* Prevent zoom on input focus on iOS */
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 16px;
+  }
+
+  /* Improve touch targets */
+  button,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better scrolling on mobile */
+  html {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* Prevent horizontal scroll on mobile */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Improve table responsiveness */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  /* Better focus indicators for accessibility */
+  *:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+
+  /* Improve text selection */
+  ::selection {
+    background-color: #3b82f6;
+    color: white;
+  }
+}
+
+@layer components {
+  /* Mobile-friendly card styles */
+  .mobile-card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6;
+  }
+
+  /* Mobile-friendly button styles */
+  .mobile-button {
+    @apply min-h-[44px] px-4 py-2 rounded-lg font-medium transition-colors cursor-pointer;
+  }
+
+  /* Mobile-friendly input styles */
+  .mobile-input {
+    @apply w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white;
+  }
+
+  /* Mobile-friendly modal styles */
+  .mobile-modal {
+    @apply fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4;
+  }
+
+  .mobile-modal-content {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto;
+  }
+
+  /* Mobile-friendly navigation styles */
+  .mobile-nav-item {
+    @apply px-4 py-3 rounded-lg transition-colors text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700;
+  }
+
+  /* Mobile-friendly table styles */
+  .mobile-table {
+    @apply min-w-full text-xs sm:text-sm;
+  }
+
+  .mobile-table th {
+    @apply px-2 sm:px-4 py-2 sm:py-3 text-left font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider;
+  }
+
+  .mobile-table td {
+    @apply px-2 sm:px-4 py-3 sm:py-4 whitespace-nowrap;
+  }
+
+  /* Mobile-friendly grid layouts */
+  .mobile-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6;
+  }
+
+  /* Mobile-friendly spacing */
+  .mobile-spacing {
+    @apply space-y-4 sm:space-y-6;
+  }
+
+  .mobile-padding {
+    @apply p-4 sm:p-6;
+  }
+
+  .mobile-margin {
+    @apply m-4 sm:m-6;
+  }
+
+  /* Mobile-friendly text sizes */
+  .mobile-text-sm {
+    @apply text-xs sm:text-sm;
+  }
+
+  .mobile-text-base {
+    @apply text-sm sm:text-base;
+  }
+
+  .mobile-text-lg {
+    @apply text-base sm:text-lg;
+  }
+
+  .mobile-text-xl {
+    @apply text-lg sm:text-xl;
+  }
+
+  .mobile-text-2xl {
+    @apply text-xl sm:text-2xl;
+  }
+
+  /* Mobile-friendly icon sizes */
+  .mobile-icon-sm {
+    @apply w-4 h-4 sm:w-5 sm:h-5;
+  }
+
+  .mobile-icon-md {
+    @apply w-5 h-5 sm:w-6 sm:h-6;
+  }
+
+  .mobile-icon-lg {
+    @apply w-6 h-6 sm:w-8 sm:h-8;
+  }
+
+  /* Mobile-friendly flex layouts */
+  .mobile-flex-col {
+    @apply flex flex-col sm:flex-row;
+  }
+
+  .mobile-flex-wrap {
+    @apply flex flex-wrap gap-2 sm:gap-3;
+  }
+
+  /* Mobile-friendly responsive utilities */
+  .mobile-hidden {
+    @apply hidden sm:block;
+  }
+
+  .mobile-block {
+    @apply block sm:hidden;
+  }
+
+  /* Mobile-friendly touch interactions */
+  .mobile-touch-target {
+    @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
+  }
+
+  /* Mobile-friendly scroll containers */
+  .mobile-scroll {
+    @apply overflow-x-auto overflow-y-auto;
+  }
+
+  /* Mobile-friendly form elements */
+  .mobile-form-group {
+    @apply space-y-2 sm:space-y-3;
+  }
+
+  .mobile-form-label {
+    @apply block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300;
+  }
+
+  .mobile-form-input {
+    @apply w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm;
+  }
+
+  /* Mobile-friendly status indicators */
+  .mobile-status {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  .mobile-status-success {
+    @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200;
+  }
+
+  .mobile-status-warning {
+    @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200;
+  }
+
+  .mobile-status-error {
+    @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200;
+  }
+
+  .mobile-status-info {
+    @apply bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200;
+  }
+}
+
+@layer utilities {
+  /* Mobile-specific utilities */
+  .mobile-safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .mobile-safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .mobile-safe-left {
+    padding-left: env(safe-area-inset-left);
+  }
+
+  .mobile-safe-right {
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Prevent text selection on interactive elements */
+  .mobile-no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Improve touch feedback */
+  .mobile-touch-feedback {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-touch-feedback:active {
+    transform: scale(0.98);
+  }
+
+  /* Mobile-friendly shadows */
+  .mobile-shadow {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .mobile-shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Mobile-friendly transitions */
+  .mobile-transition {
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* Mobile-friendly focus states */
+  .mobile-focus {
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+
+  /* Mobile-friendly hover states */
+  .mobile-hover {
+    @apply hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors;
+  }
+
+  /* Mobile-friendly active states */
+  .mobile-active {
+    @apply active:bg-gray-100 dark:active:bg-gray-600;
+  }
+
+  /* Mobile-friendly disabled states */
+  .mobile-disabled {
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+}

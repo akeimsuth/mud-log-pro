@@ -425,19 +425,19 @@ export default function SettingsPage() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Header />
 
-      <main className="max-w-6xl mx-auto px-6 py-8">
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">
             Settings & Templates
           </h1>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
             Configure correction profiles, LAS templates, and system preferences
           </p>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm mb-8">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm mb-6 sm:mb-8">
           <div className="border-b border-gray-200 dark:border-gray-700">
-            <nav className="flex">
+            <nav className="flex overflow-x-auto">
               {[
                 { id: 'profiles', label: 'Correction Profiles', icon: 'ri-line-chart-line' },
                 { id: 'templates', label: 'LAS Templates', icon: 'ri-file-text-line' },
@@ -447,16 +447,17 @@ export default function SettingsPage() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
-                  className={`flex items-center space-x-2 px-6 py-4 text-sm font-medium transition-colors whitespace-nowrap cursor-pointer ${
+                  className={`flex items-center space-x-2 px-4 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap cursor-pointer min-w-fit ${
                     activeTab === tab.id
                       ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400'
                       : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
                   }`}
                 >
-                  <div className="w-4 h-4 flex items-center justify-center">
+                  <div className="w-5 h-5 sm:w-4 sm:h-4 flex items-center justify-center">
                     <i className={tab.icon}></i>
                   </div>
-                  <span>{tab.label}</span>
+                  <span className="hidden sm:inline">{tab.label}</span>
+                  <span className="sm:hidden text-xs font-medium">{tab.label.split(' ')[0]}</span>
                 </button>
               ))}
             </nav>
@@ -464,15 +465,15 @@ export default function SettingsPage() {
         </div>
 
         {activeTab === 'profiles' && (
-          <div className="space-y-6">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+          <div className="space-y-4 sm:space-y-6">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6 space-y-3 sm:space-y-0">
+                <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
                   Drift Correction Profiles
                 </h2>
                 <button
                   onClick={() => setShowNewProfileModal(true)}
-                  className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap cursor-pointer"
+                  className="flex items-center space-x-2 px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap cursor-pointer text-sm"
                 >
                   <div className="w-4 h-4 flex items-center justify-center">
                     <i className="ri-add-line"></i>
@@ -481,33 +482,33 @@ export default function SettingsPage() {
                 </button>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {correctionProfiles.map((profile) => (
                   <div
                     key={profile.id}
-                    className={`p-6 rounded-lg border-2 transition-colors ${
+                    className={`p-4 sm:p-6 rounded-lg border-2 transition-colors ${
                       profile.isDefault
                         ? 'border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-900/20'
                         : 'border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700'
                     }`}
                   >
-                    <div className="flex items-start justify-between mb-4">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 sm:mb-4 space-y-3 sm:space-y-0">
                       <div>
-                        <div className="flex items-center space-x-3">
-                          <h3 className="font-semibold text-gray-900 dark:text-white">{profile.name}</h3>
+                        <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-3">
+                          <h3 className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">{profile.name}</h3>
                           {profile.isDefault && (
-                            <span className="px-2 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 text-xs font-medium rounded-full">
+                            <span className="px-2 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 text-xs font-medium rounded-full w-fit">
                               Default
                             </span>
                           )}
                         </div>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">{profile.description}</p>
+                        <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mt-1">{profile.description}</p>
                       </div>
                       <div className="flex items-center space-x-2">
                         {!profile.isDefault && (
                           <button
                             onClick={() => setDefaultProfile(profile.id)}
-                            className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 text-sm cursor-pointer whitespace-nowrap"
+                            className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 text-xs sm:text-sm cursor-pointer whitespace-nowrap"
                           >
                             Set as Default
                           </button>
@@ -520,7 +521,7 @@ export default function SettingsPage() {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                       <div className="bg-white dark:bg-gray-800 p-3 rounded-lg">
                         <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
                           Drift Threshold
@@ -528,7 +529,7 @@ export default function SettingsPage() {
                         <input
                           type="number"
                           value={profile.parameters.driftThreshold}
-                          className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                          className="w-full px-2 py-1 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                           step="0.01"
                           min="0"
                           max="1"
@@ -541,7 +542,7 @@ export default function SettingsPage() {
                         <input
                           type="number"
                           value={profile.parameters.outlierSensitivity}
-                          className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                          className="w-full px-2 py-1 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                           step="0.1"
                           min="0.5"
                           max="5"
@@ -554,7 +555,7 @@ export default function SettingsPage() {
                         <input
                           type="number"
                           value={profile.parameters.smoothingWindow}
-                          className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                          className="w-full px-2 py-1 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                           step="1"
                           min="1"
                           max="20"
@@ -569,15 +570,15 @@ export default function SettingsPage() {
         )}
 
         {activeTab === 'templates' && (
-          <div className="space-y-6">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+          <div className="space-y-4 sm:space-y-6">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6 space-y-3 sm:space-y-0">
+                <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
                   LAS Export Templates
                 </h2>
                 <button
                   onClick={() => setShowNewTemplateModal(true)}
-                  className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap cursor-pointer"
+                  className="flex items-center space-x-2 px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap cursor-pointer text-sm"
                 >
                   <div className="w-4 h-4 flex items-center justify-center">
                     <i className="ri-add-line"></i>
@@ -586,33 +587,33 @@ export default function SettingsPage() {
                 </button>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {lasTemplates.map((template) => (
                   <div
                     key={template.id}
-                    className={`p-6 rounded-lg border-2 transition-colors ${
+                    className={`p-4 sm:p-6 rounded-lg border-2 transition-colors ${
                       template.isDefault
                         ? 'border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-900/20'
                         : 'border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700'
                     }`}
                   >
-                    <div className="flex items-start justify-between mb-4">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 sm:mb-4 space-y-3 sm:space-y-0">
                       <div>
-                        <div className="flex items-center space-x-3">
-                          <h3 className="font-semibold text-gray-900 dark:text-white">{template.name}</h3>
+                        <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-3">
+                          <h3 className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">{template.name}</h3>
                           {template.isDefault && (
-                            <span className="px-2 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 text-xs font-medium rounded-full">
+                            <span className="px-2 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 text-xs font-medium rounded-full w-fit">
                               Default
                             </span>
                           )}
                         </div>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">{template.description}</p>
+                        <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mt-1">{template.description}</p>
                       </div>
                       <div className="flex items-center space-x-2">
                         {!template.isDefault && (
                           <button
                             onClick={() => setDefaultTemplate(template.id)}
-                            className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 text-sm cursor-pointer whitespace-nowrap"
+                            className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 text-xs sm:text-sm cursor-pointer whitespace-nowrap"
                           >
                             Set as Default
                           </button>
@@ -626,19 +627,19 @@ export default function SettingsPage() {
                     </div>
 
                     <div className="overflow-x-auto">
-                      <table className="min-w-full">
+                      <table className="min-w-full text-xs sm:text-sm">
                         <thead>
                           <tr className="bg-white dark:bg-gray-800">
-                            <th className="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                            <th className="px-2 sm:px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                               Curve Name
                             </th>
-                            <th className="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                            <th className="px-2 sm:px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                               Unit
                             </th>
-                            <th className="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                            <th className="px-2 sm:px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                               Description
                             </th>
-                            <th className="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                            <th className="px-2 sm:px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                               Required
                             </th>
                           </tr>
@@ -646,22 +647,22 @@ export default function SettingsPage() {
                         <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                           {template.curves.map((curve, index) => (
                             <tr key={index}>
-                              <td className="px-3 py-2 text-sm font-medium text-gray-900 dark:text-white">
+                              <td className="px-2 sm:px-3 py-2 text-xs sm:text-sm font-medium text-gray-900 dark:text-white">
                                 {curve.name}
                               </td>
-                              <td className="px-3 py-2 text-sm text-gray-500 dark:text-gray-400">
+                              <td className="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                                 {curve.unit}
                               </td>
-                              <td className="px-3 py-2 text-sm text-gray-500 dark:text-gray-400">
+                              <td className="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                                 {curve.description}
                               </td>
-                              <td className="px-3 py-2">
+                              <td className="px-2 sm:px-3 py-2">
                                 {curve.required ? (
-                                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                                     Required
                                   </span>
                                 ) : (
-                                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+                                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
                                     Optional
                                   </span>
                                 )}
@@ -679,15 +680,15 @@ export default function SettingsPage() {
         )}
 
         {activeTab === 'system' && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6">
+              <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">
                 General Settings
               </h2>
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <label className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">
                       Auto-save
                     </label>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
@@ -703,53 +704,53 @@ export default function SettingsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Data Retention (days)
                   </label>
                   <input
                     type="number"
                     value={systemSettings.dataRetention}
                     onChange={(e) => updateSystemSetting('dataRetention', parseInt(e.target.value))}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm"
                     min="1"
                     max="365"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Export Path
                   </label>
                   <input
                     type="text"
                     value={systemSettings.exportPath}
                     onChange={(e) => updateSystemSetting('exportPath', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Maximum File Size (MB)
                   </label>
                   <input
                     type="number"
                     value={systemSettings.maxFileSize}
                     onChange={(e) => updateSystemSetting('maxFileSize', parseInt(e.target.value))}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm"
                     min="1"
                     max="100"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Unit System
                   </label>
                   <select
                     value={systemSettings.units}
                     onChange={(e) => updateSystemSetting('units', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm"
                   >
                     <option value="imperial">Imperial (ft, ppm)</option>
                     <option value="metric">Metric (m, mg/L)</option>
@@ -758,37 +759,37 @@ export default function SettingsPage() {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6">
+              <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">
                 API Configuration
               </h2>
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Solo Feed API Endpoint
                   </label>
                   <input
                     type="url"
                     value={systemSettings.apiEndpoint}
                     onChange={(e) => updateSystemSetting('apiEndpoint', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     WITSML Server URL
                   </label>
                   <input
                     type="url"
                     value={systemSettings.witsmlUrl}
                     onChange={(e) => updateSystemSetting('witsmlUrl', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm"
                   />
                 </div>
 
-                <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-                  <button className="flex items-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors whitespace-nowrap cursor-pointer">
+                <div className="pt-3 sm:pt-4 border-t border-gray-200 dark:border-gray-700">
+                  <button className="flex items-center space-x-2 px-3 sm:px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors whitespace-nowrap cursor-pointer text-sm">
                     <div className="w-4 h-4 flex items-center justify-center">
                       <i className="ri-check-line"></i>
                     </div>
@@ -801,16 +802,16 @@ export default function SettingsPage() {
         )}
 
         {activeTab === 'voice' && (
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6">
+            <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">
               Voice Assistant Configuration
             </h2>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+              <div className="space-y-4 sm:space-y-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <label className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">
                       Enable Voice Assistant
                     </label>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
@@ -826,13 +827,13 @@ export default function SettingsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Language
                   </label>
                   <select
                     value={voiceSettings.language}
                     onChange={(e) => updateVoiceSetting('language', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm"
                   >
                     <option value="en-US">English (US)</option>
                     <option value="en-GB">English (UK)</option>
@@ -842,13 +843,13 @@ export default function SettingsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Voice Type
                   </label>
                   <select
                     value={voiceSettings.voice}
                     onChange={(e) => updateVoiceSetting('voice', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm"
                   >
                     <option value="female">Female Voice</option>
                     <option value="male">Male Voice</option>
@@ -856,7 +857,7 @@ export default function SettingsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Speech Speed: {voiceSettings.speed}x
                   </label>
                   <input
@@ -871,20 +872,20 @@ export default function SettingsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Wake Word
                   </label>
                   <input
                     type="text"
                     value={voiceSettings.hotword}
                     onChange={(e) => updateVoiceSetting('hotword', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm"
                   />
                 </div>
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <label className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">
                       Voice Confirmations
                     </label>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
@@ -900,12 +901,12 @@ export default function SettingsPage() {
                 </div>
               </div>
 
-              <div className="space-y-6">
-                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
+              <div className="space-y-4 sm:space-y-6">
+                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 sm:p-6">
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4 text-sm sm:text-base">
                     Available Commands
                   </h3>
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-xs sm:text-sm">
                     <div className="flex justify-between">
                       <span className="text-gray-600 dark:text-gray-400">
                         "Upload file"
@@ -949,17 +950,17 @@ export default function SettingsPage() {
                   </div>
                 </div>
 
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6">
-                  <h3 className="font-semibold text-blue-900 dark:text-blue-200 mb-4">
+                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 sm:p-6">
+                  <h3 className="font-semibold text-blue-900 dark:text-blue-200 mb-3 sm:mb-4 text-sm sm:text-base">
                     Test Voice Settings
                   </h3>
-                  <p className="text-blue-800 dark:text-blue-300 text-sm mb-4">
+                  <p className="text-blue-800 dark:text-blue-300 text-xs sm:text-sm mb-3 sm:mb-4">
                     Test your voice configuration with sample phrases
                   </p>
-                  <div className="space-y-3">
+                  <div className="space-y-2 sm:space-y-3">
                     <button
                       onClick={testVoiceOutput}
-                      className="w-full flex items-center justify-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap cursor-pointer"
+                      className="w-full flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap cursor-pointer text-sm"
                     >
                       <div className="w-4 h-4 flex items-center justify-center">
                         <i className="ri-play-line"></i>
@@ -968,7 +969,7 @@ export default function SettingsPage() {
                     </button>
                     <button
                       onClick={testVoiceRecognition}
-                      className="w-full flex items-center justify-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors whitespace-nowrap cursor-pointer"
+                      className="w-full flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors whitespace-nowrap cursor-pointer text-sm"
                     >
                       <div className="w-4 h-4 flex items-center justify-center">
                         <i className="ri-mic-line"></i>

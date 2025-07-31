@@ -117,12 +117,12 @@ export default function FileUploadZone({
     <div className="w-full">
       <div
         className={`
-          relative border-2 border-dashed rounded-xl p-8 text-center transition-all duration-200 cursor-pointer
+          relative border-2 border-dashed rounded-xl p-6 sm:p-8 text-center transition-all duration-200 cursor-pointer
           ${isDragOver 
             ? 'border-blue-400 bg-blue-50 dark:bg-blue-900/20' 
             : 'border-gray-300 dark:border-gray-600 hover:border-blue-300 hover:bg-gray-50 dark:hover:bg-gray-800'
           }
-          ${seniorMode ? 'p-12 text-lg' : ''}
+          ${seniorMode ? 'p-8 sm:p-12 text-lg' : ''}
           ${isUploading ? 'pointer-events-none' : ''}
         `}
         onDrop={handleDrop}
@@ -138,30 +138,30 @@ export default function FileUploadZone({
           onChange={handleFileSelect}
         />
 
-        <div className="flex flex-col items-center space-y-4">
-          <div className={`${seniorMode ? 'w-16 h-16' : 'w-12 h-12'} flex items-center justify-center`}>
+        <div className="flex flex-col items-center space-y-3 sm:space-y-4">
+          <div className={`${seniorMode ? 'w-12 h-12 sm:w-16 sm:h-16' : 'w-10 h-10 sm:w-12 sm:h-12'} flex items-center justify-center`}>
             {isUploading ? (
-              <i className="ri-loader-4-line text-4xl text-blue-600 animate-spin"></i>
+              <i className="ri-loader-4-line text-3xl sm:text-4xl text-blue-600 animate-spin"></i>
             ) : (
-              <i className="ri-upload-cloud-2-line text-4xl text-gray-400"></i>
+              <i className="ri-upload-cloud-2-line text-3xl sm:text-4xl text-gray-400"></i>
             )}
           </div>
 
-          <div className="space-y-2">
-            <p className={`font-semibold text-gray-700 dark:text-gray-300 ${seniorMode ? 'text-xl' : 'text-lg'}`}>
+          <div className="space-y-1 sm:space-y-2">
+            <p className={`font-semibold text-gray-700 dark:text-gray-300 ${seniorMode ? 'text-lg sm:text-xl' : 'text-base sm:text-lg'}`}>
               {isUploading ? 'Processing file...' : 'Drop your data file here'}
             </p>
-            <p className={`text-gray-500 dark:text-gray-400 ${seniorMode ? 'text-lg' : 'text-sm'}`}>
+            <p className={`text-gray-500 dark:text-gray-400 ${seniorMode ? 'text-base sm:text-lg' : 'text-sm'}`}>
               or click to browse files
             </p>
-            <p className={`text-gray-400 dark:text-gray-500 ${seniorMode ? 'text-base' : 'text-xs'}`}>
+            <p className={`text-gray-400 dark:text-gray-500 ${seniorMode ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
               Supports: {acceptedTypes.join(', ')} (max {Math.round(maxFileSize / (1024 * 1024))}MB)
             </p>
           </div>
         </div>
 
         {isUploading && (
-          <div className="absolute bottom-4 left-4 right-4">
+          <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4">
             <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
               <div 
                 className="bg-blue-600 h-2 rounded-full transition-all duration-300"
@@ -176,12 +176,12 @@ export default function FileUploadZone({
       </div>
 
       {error && (
-        <div className="mt-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+        <div className="mt-3 sm:mt-4 p-3 sm:p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
           <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 flex items-center justify-center">
+            <div className="w-4 h-4 flex items-center justify-center flex-shrink-0">
               <i className="ri-error-warning-line text-red-600 dark:text-red-400"></i>
             </div>
-            <p className={`text-red-700 dark:text-red-400 ${seniorMode ? 'text-lg' : 'text-sm'}`}>
+            <p className={`text-red-700 dark:text-red-400 ${seniorMode ? 'text-base sm:text-lg' : 'text-sm'}`}>
               {error}
             </p>
           </div>
